@@ -41,7 +41,12 @@ emptyStatement
 
 // Import Statement
 importStatement
-    : IMPORT '*' FROM stringLiteral
+    : IMPORT '*' FROM stringLiteral           // import * from "path"
+    | IMPORT importSymbolList FROM stringLiteral  // import x, y from "path"
+    ;
+
+importSymbolList
+    : IDENTIFIER (',' IDENTIFIER)*
     ;
 
 // Declarations
