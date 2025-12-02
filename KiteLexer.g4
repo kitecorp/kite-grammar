@@ -100,14 +100,14 @@ NUMBER
 // Double-quoted string - enter string mode
 DQUOTE      : '"' -> pushMode(STRING_MODE) ;
 
-// Single-quoted string (no interpolation)
+// Single-quoted string (no interpolation, supports multiline)
 SINGLE_STRING
     : '\'' SingleStringCharacter* '\''
     ;
 
 fragment
 SingleStringCharacter
-    : ~['\\\r\n]
+    : ~['\\]
     | EscapeSequence
     ;
 
