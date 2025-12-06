@@ -95,7 +95,7 @@ schemaPropertyList
     ;
 
 schemaProperty
-    : (INPUT | OUTPUT)? decoratorList? typeIdentifier identifier propertyInitializer?
+    : decoratorList? typeIdentifier identifier propertyInitializer?
     ;
 
 propertyInitializer
