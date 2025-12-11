@@ -54,6 +54,7 @@ declaration
     : decoratorList? NL* functionDeclaration
     | decoratorList? NL* typeDeclaration
     | decoratorList? NL* schemaDeclaration
+    | decoratorList? NL* structDeclaration
     | decoratorList? NL* resourceDeclaration
     | decoratorList? NL* componentDeclaration
     | decoratorList? NL* inputDeclaration
@@ -95,6 +96,19 @@ schemaPropertyList
     ;
 
 schemaProperty
+    : decoratorList? typeIdentifier identifier propertyInitializer?
+    ;
+
+// Struct declaration - supports both inline and block styles
+structDeclaration
+    : STRUCT identifier LBRACE statementTerminator* structPropertyList? statementTerminator* RBRACE
+    ;
+
+structPropertyList
+    : structProperty ((statementTerminator+ | ',') structProperty)* statementTerminator*
+    ;
+
+structProperty
     : decoratorList? typeIdentifier identifier propertyInitializer?
     ;
 
@@ -315,7 +329,7 @@ objectKey
 
 // Allow keywords as object property names (e.g., {type: "value"})
 keyword
-    : RESOURCE | COMPONENT | SCHEMA | INPUT | OUTPUT
+    : RESOURCE | COMPONENT | SCHEMA | STRUCT | INPUT | OUTPUT
     | IF | ELSE | WHILE | FOR | IN | RETURN
     | FUN | VAR | TYPE | INIT | THIS
     | OBJECT | ANY

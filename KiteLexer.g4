@@ -13,6 +13,7 @@ lexer grammar KiteLexer;
 RESOURCE    : 'resource' ;
 COMPONENT   : 'component' ;
 SCHEMA      : 'schema' ;
+STRUCT      : 'struct' ;
 INPUT       : 'input' ;
 OUTPUT      : 'output' ;
 
