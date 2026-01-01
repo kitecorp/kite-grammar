@@ -96,7 +96,7 @@ schemaPropertyList
     ;
 
 schemaProperty
-    : decoratorList? typeIdentifier identifier propertyInitializer?
+    : decoratorList? NL* typeIdentifier identifier propertyInitializer?
     ;
 
 // Struct declaration - supports both inline and block styles
@@ -109,7 +109,7 @@ structPropertyList
     ;
 
 structProperty
-    : decoratorList? typeIdentifier identifier propertyInitializer?
+    : decoratorList? NL* typeIdentifier identifier propertyInitializer?
     ;
 
 propertyInitializer
