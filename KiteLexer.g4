@@ -37,6 +37,7 @@ THIS        : 'this' ;
 // Keywords - Types
 OBJECT      : 'object' ;
 ANY         : 'any' ;
+MAP         : 'map' ;
 
 // Literals
 TRUE        : 'true' ;

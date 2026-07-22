@@ -332,7 +332,7 @@ keyword
     : RESOURCE | COMPONENT | SCHEMA | STRUCT | INPUT | OUTPUT
     | IF | ELSE | WHILE | FOR | IN | RETURN
     | FUN | VAR | TYPE | INIT | THIS
-    | OBJECT | ANY
+    | OBJECT | ANY | MAP
     | TRUE | FALSE | NULL
     ;
 
@@ -378,6 +378,7 @@ arrayItem
 // Type System
 typeIdentifier
     : functionType ('[' NUMBER? ']')*
+    | mapType ('[' NUMBER? ']')*
     | (complexTypeIdentifier | OBJECT | ANY) ('[' NUMBER? ']')*
     ;
 functionType
@@ -385,6 +386,11 @@ functionType
     ;
 functionTypeParams
     : typeIdentifier (',' typeIdentifier)*
+    ;
+// map<KeyType, ValueType> - mirrors functionType's own dedicated sub-rule so both
+// multi-type constructs (function params, map key/value) follow the same shape.
+mapType
+    : MAP '<' typeIdentifier ',' typeIdentifier '>'
     ;
 complexTypeIdentifier
     : IDENTIFIER ('.' IDENTIFIER)*
